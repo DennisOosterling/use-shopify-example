@@ -1,7 +1,12 @@
 module.exports = {
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        title: ["Poppins", "sans-serif"],
+        body: ["Anonymous Pro", "mono"],
+      },
+    },
   },
   variants: {},
   plugins: [],
