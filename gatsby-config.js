@@ -32,7 +32,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Poppins", "PT Serif", "Anonymous Pro"],
+          families: ["Poppins:400,800", "PT Serif", "Anonymous Pro"],
         },
       },
     },

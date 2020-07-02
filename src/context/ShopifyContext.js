@@ -7,13 +7,13 @@ const { Provider } = ShopifyContext
 
 const persistedStateId = "shopifyCheckout"
 
-function createShopifyClient() {
-  return shopify.buildClient({
-    domain: `graphql.myshopify.com`,
-    storefrontAccessToken: "dd4d4dc146542ba7763305d71d1b3d38",
-    apiVersion: "2020-04",
-  })
-}
+// function createShopifyClient() {
+//   return shopify.buildClient({
+//     domain: `graphql.myshopify.com`,
+//     storefrontAccessToken: "dd4d4dc146542ba7763305d71d1b3d38",
+//     apiVersion: "2020-04",
+//   })
+// }
 
 const shopifyActions = {
   setLoading: "set_loading",
@@ -40,8 +40,8 @@ const useShopify = () => {
   return context
 }
 
-const ShopifyProvider = ({ children }) => {
-  const client = useMemo(() => createShopifyClient(), [])
+const ShopifyProvider = ({ client, children }) => {
+  //   const client = useMemo(() => createShopifyClient(), [])
 
   const [shopifyCheckoutId, setShopifyCheckoutId] = useLocalStorage(
     persistedStateId,
