@@ -1,19 +1,10 @@
-import React, { useContext, useEffect, useReducer, useMemo } from "react"
-import shopify from "shopify-buy"
+import React, { useContext, useEffect, useReducer } from "react"
 import { useLocalStorage } from "react-use"
 
 const ShopifyContext = React.createContext({})
 const { Provider } = ShopifyContext
 
 const persistedStateId = "shopifyCheckout"
-
-// function createShopifyClient() {
-//   return shopify.buildClient({
-//     domain: `graphql.myshopify.com`,
-//     storefrontAccessToken: "dd4d4dc146542ba7763305d71d1b3d38",
-//     apiVersion: "2020-04",
-//   })
-// }
 
 const shopifyActions = {
   setLoading: "set_loading",
@@ -41,8 +32,6 @@ const useShopify = () => {
 }
 
 const ShopifyProvider = ({ client, children }) => {
-  //   const client = useMemo(() => createShopifyClient(), [])
-
   const [shopifyCheckoutId, setShopifyCheckoutId] = useLocalStorage(
     persistedStateId,
     ""
