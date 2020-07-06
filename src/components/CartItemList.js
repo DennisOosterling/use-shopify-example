@@ -12,7 +12,9 @@ const CartItemList = () => {
     <div className="flex justify-center">
       <ContentWrapper className="w-full px-4">
         <div className="flex flex-row items-center justify-between sticky top-0 bg-gray-100">
-          <h2 className="font-title text-4xl py-4">Shopping Cart</h2>
+          <h2 className="font-title text-2xl md:text-4xl py-4">
+            Shopping Cart
+          </h2>
           <div>
             {!isEmpty && (
               <a

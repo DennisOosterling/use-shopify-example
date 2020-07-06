@@ -4,10 +4,34 @@ import { X, PlusCircle, MinusCircle } from "react-feather"
 
 const LineItem = ({ lineItem }) => {
   const [isLoading, setIsLoading] = useState()
-  const { removeItem } = useShopify()
+  const { removeItem, updateItem, addItem } = useShopify()
+
+  const addToCart = shopifyId => {
+    setIsLoading(true)
+    addItem({ variantId: shopifyId, quantity: 1 })
+      .then(() => setIsLoading(false))
+      .catch(() => {
+        // TODO: add logging
+        setIsLoading(false)
+      })
+  }
+
+  // Removes a single item from a lineItem from the cart
+  const removeFromCart = (lineItemId, quantity) => {
+    setIsLoading(true)
+    updateItem({ id: lineItemId, quantity: quantity })
+      .then(() => setIsLoading(false))
+      .catch(() => {
+        // TODO: add logging
+        setIsLoading(false)
+      })
+  }
 
   return (
-    <div className="flex flex-row justify-between border-t py-4 items-center w-full">
+    <div
+      className="flex flex-row justify-between border-t py-4 items-center w-full"
+      style={{ opacity: isLoading ? 0.5 : 1 }}
+    >
       <div className="w-1/5">
         <img
           src={lineItem.variant.image.src}
@@ -17,11 +41,20 @@ const LineItem = ({ lineItem }) => {
       </div>
       <div className="font-body ml-2 w-1/5">{lineItem.title}</div>
       <div className="font-body ml-2 w-1/5 flex flex-row items-center">
-        <MinusCircle size={18} className="mr-2" /> {lineItem.quantity}X{" "}
-        <PlusCircle size={18} className="ml-2" />
+        <MinusCircle
+          onClick={() => removeFromCart(lineItem.id, lineItem.quantity - 1)}
+          size={18}
+          className="mr-2 cursor-pointer"
+        />{" "}
+        {lineItem.quantity}X
+        <PlusCircle
+          onClick={() => addToCart(lineItem.variant.id)}
+          size={18}
+          className="ml-2 cursor-pointer"
+        />
       </div>
       <div className="font-body ml-2 w-1/5">
-        € {lineItem.quantity * lineItem.variant.price}
+        $ {lineItem.quantity * lineItem.variant.price}
       </div>
       <div className="flex justify-end">
         <X

@@ -6,7 +6,7 @@ import { useShopify } from "../context/ShopifyContext"
 import ContentWrapper from "../components/ContentWrapper"
 import ProductCard from "../components/ProductCard"
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const [products, setProducts] = useState(null)
   const { client } = useShopify()
 
@@ -26,13 +26,45 @@ const IndexPage = () => {
       <div className="flex justify-center">
         <ContentWrapper>
           <div className="flex flex-wrap w-full py-4">
-            {products &&
-              products.map(item => <ProductCard item={item}></ProductCard>)}
+            {data &&
+              data.allShopifyProduct.edges.map(i => (
+                <>{i.next && <ProductCard item={i.next}></ProductCard>}</>
+              ))}
+            {/* {products &&
+              products.map(item => <ProductCard item={item}></ProductCard>)} */}
           </div>
         </ContentWrapper>
       </div>
     </Layout>
   )
 }
+export const query = graphql`
+  {
+    allShopifyProduct(filter: { vendor: { eq: "All Saints" } }) {
+      edges {
+        next {
+          id
+          title
+          variants {
+            price
+            id
+            shopifyId
+          }
+          images {
+            originalSrc
+            localFile {
+              childImageSharp {
+                fluid(quality: 100) {
+                  src
+                }
+              }
+            }
+          }
+          vendor
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
