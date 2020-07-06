@@ -28,10 +28,10 @@ const Layout = ({ children }) => {
       <div>
         <main>{children}</main>
         <footer className="font-title">
-          © {new Date().getFullYear()}, Built with
+          {/* © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a> - Example for{" "}
-          <a href="">use-shopify-buy-sdk</a>
+          <a href="">use-shopify-buy-sdk</a> */}
         </footer>
       </div>
     </>
