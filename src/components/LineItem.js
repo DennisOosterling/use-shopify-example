@@ -37,9 +37,10 @@ const LineItem = ({ lineItem }) => {
           src={lineItem.variant.image.src}
           className="rounded"
           style={{ maxWidth: "100px" }}
+          alt="product"
         ></img>
       </div>
-      <div className="font-body ml-2 w-1/5">
+      <div className="font-body ml-2 w-1/5 leading-none">
         <span className="font-body bg-gray-900 text-white px-2">
           {lineItem.title}
         </span>

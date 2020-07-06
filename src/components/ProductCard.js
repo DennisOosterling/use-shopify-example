@@ -34,18 +34,18 @@ const ProductCard = ({ item }) => {
       )}
       <Img
         fluid={item.images[0].localFile.childImageSharp.fluid}
-        style={{ minWidth: "240px", height: "320px", zIndex: -1 }}
+        style={{ minWidth: "100%", zIndex: -1 }}
         objectFit="cover"
         className="rounded-t"
       />
       <Plus className="absolute right-0 top-0 m-4 text-gray-600" />
-      <div className="-mt-4">
-        <div className=" ml-2">
+      <div className="-mt-3">
+        <div className="ml-2 leading-none">
           <span className="font-body bg-gray-900 text-white px-2">
             {item.title}
           </span>
         </div>
-        <div className="-mt-2 ml-2">
+        <div className="ml-2">
           <span className="font-body bg-gray-900 text-white px-2">
             $ {formatPrice(item.variants[0].price)}
           </span>

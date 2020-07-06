@@ -5,7 +5,7 @@ import LineItem from "./LineItem"
 import empty from "../images/empty.png"
 
 const CartItemList = () => {
-  const { checkout, removeItem } = useShopify()
+  const { checkout } = useShopify()
   const isEmpty = checkout.loaded && checkout.lineItems.length === 0
   const cartReady = checkout.loaded && checkout.lineItems.length > 0
   return (
@@ -27,10 +27,12 @@ const CartItemList = () => {
           </div>
         </div>
         {cartReady &&
-          checkout.lineItems.map(lineItem => <LineItem lineItem={lineItem} />)}
+          checkout.lineItems.map(lineItem => (
+            <LineItem key={lineItem.id} lineItem={lineItem} />
+          ))}
         {isEmpty && (
           <div className="flex flex-col items-center justify-center">
-            <img src={empty} className="max-w-md"></img>
+            <img src={empty} className="max-w-md" alt="empty" />
             <div>
               <span className="text-white bg-gray-900 px-2 font-body">
                 Your cart is empty
