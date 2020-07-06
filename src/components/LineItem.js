@@ -39,7 +39,11 @@ const LineItem = ({ lineItem }) => {
           style={{ maxWidth: "100px" }}
         ></img>
       </div>
-      <div className="font-body ml-2 w-1/5">{lineItem.title}</div>
+      <div className="font-body ml-2 w-1/5">
+        <span className="font-body bg-gray-900 text-white px-2">
+          {lineItem.title}
+        </span>
+      </div>
       <div className="font-body ml-2 w-1/5 flex flex-row items-center">
         <MinusCircle
           onClick={() => removeFromCart(lineItem.id, lineItem.quantity - 1)}

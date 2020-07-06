@@ -4,6 +4,7 @@ import ContentWrapper from "./ContentWrapper"
 import { ShoppingCart } from "react-feather"
 import { Link } from "gatsby"
 import { useShopify } from "../context/ShopifyContext"
+
 const Header = ({ siteTitle }) => {
   const { checkout } = useShopify()
   const isEmpty = checkout.loaded && checkout.lineItems.length === 0
