@@ -41,7 +41,7 @@ const LineItem = ({ lineItem }) => {
         ></img>
       </div>
       <div className="font-body ml-2 w-1/5 leading-none">
-        <span className="font-body bg-gray-900 text-white px-2">
+        <span className="font-body bg-gray-900 text-white sm:px-2">
           {lineItem.title}
         </span>
       </div>
