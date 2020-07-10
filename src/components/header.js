@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import ContentWrapper from "./ContentWrapper"
-import { ShoppingCart, X } from "react-feather"
+import { ShoppingCart, X, Home, User, Tag, Info } from "react-feather"
 import { Link } from "gatsby"
 import { useShopify } from "../context/ShopifyContext"
 
@@ -40,7 +40,7 @@ const Header = () => {
           </Link>
         </ContentWrapper>
       </header>
-      <nav className="flex justify-center w-full bg-white border-b border-gray-400 py-2 font-title">
+      <nav className="hidden md:flex justify-center w-full bg-white border-b border-gray-400 py-2 font-title">
         <div className="max-w-sm w-full flex justify-between px-2">
           <Link to="/">
             <div>All</div>
@@ -53,6 +53,34 @@ const Header = () => {
           </Link>
           <Link to="/about">
             <div>About</div>
+          </Link>
+        </div>
+      </nav>
+      <nav className="md:hidden fixed bottom-0 z-20 flex justify-center w-full bg-white border-b border-gray-400 py-2 font-title shadow-lg">
+        <div className="w-full flex justify-around px-4">
+          <Link to="/">
+            <div className="flex flex-col items-center justify-center text-sm">
+              <Home></Home>
+              <div>All</div>
+            </div>
+          </Link>
+          <Link to="/?type=Shirts">
+            <div className="flex flex-col items-center justify-center text-sm">
+              <User></User>
+              <div>Shirts</div>
+            </div>
+          </Link>
+          <Link to="/?type=Boots">
+            <div className="flex flex-col items-center justify-center text-sm">
+              <Tag></Tag>
+              <div>Boots</div>
+            </div>
+          </Link>
+          <Link to="/about">
+            <div className="flex flex-col items-center justify-center text-sm">
+              <Info></Info>
+              <div>About</div>
+            </div>
           </Link>
         </div>
       </nav>
